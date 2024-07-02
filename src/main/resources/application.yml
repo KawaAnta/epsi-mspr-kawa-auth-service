@@ -5,4 +5,4 @@ spring:
     import: "optional:configserver:http://localhost:8088"
 
 jwt:
-  secret: RmYwbGF4MGQ0Zk1Dd3E5RmNhZkdWcGNYaUdITXlIUVNRNjFDT0d5bVVsZEVFdw==
+  secret: ${JWT-TOKEN}

@@ -18,7 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 /**
- * Implementation of the AuthService interface.
+ * Implémentation de l'interface AuthService.
  */
 @Component
 public class AuthServiceImpl implements AuthService {
@@ -29,9 +29,9 @@ public class AuthServiceImpl implements AuthService {
     private final AuthenticationManager authenticationManager;
 
     /**
-     * Constructor for AuthServiceImpl.
+     * Constructeur pour AuthServiceImpl.
      *
-     * @param userRepository The user repository
+     * @param userRepository Le référentiel d'utilisateurs
      */
     public AuthServiceImpl(
             UserRepository userRepository,
@@ -47,11 +47,11 @@ public class AuthServiceImpl implements AuthService {
 
 
     /**
-     * Login a user with the provided credentials.
+     * Connecte un utilisateur avec les identifiants fournis.
      *
-     * @param userLoginDTO The user's login credentials.
-     * @return ApiResponse with the login response data.
-     * @throws IllegalArgumentException if the user is not found or the credentials are invalid.
+     * @param userLoginDTO Les identifiants de connexion de l'utilisateur.
+     * @return ApiResponse avec les données de la réponse de connexion.
+     * @throws IllegalArgumentException si l'utilisateur n'est pas trouvé ou si les identifiants sont invalides.
      */
     @Override
     public ApiResponse<LoginResponseDTO> login(UserLoginDTO userLoginDTO) {
@@ -62,7 +62,7 @@ public class AuthServiceImpl implements AuthService {
             throw new IllegalArgumentException("Invalid credentials");
         }
 
-        // generate a JWT token
+        // genere JWT token
         String token = jwtService.generateToken((UserDetails) authentication.getPrincipal());
         LOGGER.info("User with email: {} successfully logged in", userLoginDTO.getEmail());
 
@@ -70,27 +70,24 @@ public class AuthServiceImpl implements AuthService {
     }
 
     /**
-     * Register a new user.
+     * Enregistre un nouvel utilisateur.
      *
-     * @param userRegisterDTO The user's registration data.
-     * @return ApiResponse with the registration response data.
-     * @throws IllegalArgumentException if the email already exists.
+     * @param userRegisterDTO Les données d'inscription de l'utilisateur.
+     * @return ApiResponse avec les données de la réponse d'inscription.
+     * @throws IllegalArgumentException si l'adresse e-mail existe déjà.
      */
     @Override
     public ApiResponse<Void> register(UserRegisterDTO userRegisterDTO) {
-        // check if the required fields are present
         if (userRegisterDTO.getEmail() == null || userRegisterDTO.getPassword() == null
                 || userRegisterDTO.getFirstName() == null || userRegisterDTO.getLastName() == null) {
             LOGGER.error("User registration data not provided");
             throw new IllegalArgumentException("Required fields not provided");
         }
-        // check if the email already exists
         if (userRepository.existsByEmail(userRegisterDTO.getEmail())) {
             LOGGER.error("Email already exists: {}", userRegisterDTO.getEmail());
             throw new IllegalArgumentException("Email already exists");
         }
 
-        // create a new user
         User newUser = new User();
         newUser.setFirstName(userRegisterDTO.getFirstName());
         newUser.setLastName(userRegisterDTO.getLastName());
@@ -104,10 +101,10 @@ public class AuthServiceImpl implements AuthService {
     }
 
     /**
-     * Verify a JWT token.
+     * Vérifie un jeton JWT.
      *
-     * @param token The JWT token to verify.
-     * @return ApiResponse with the verification response data.
+     * @param token Le jeton JWT à vérifier.
+     * @return ApiResponse avec les données de la réponse de vérification.
      */
     @Override
     public ApiResponse<Void> verifyToken(String token) {

@@ -25,10 +25,10 @@ public class JWTServiceImpl implements JwtService {
     private String SECRET;
 
     /**
-     * Validates the provided JWT token.
+     * Valide le jeton JWT fourni.
      *
-     * @param token The JWT token to validate.
-     * @throws IllegalArgumentException if the token is invalid.
+     * @param token Le jeton JWT à valider.
+     * @throws IllegalArgumentException si le jeton est invalide.
      */
     @Override
     public void validateToken(String token) {

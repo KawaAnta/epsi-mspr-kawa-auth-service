@@ -34,9 +34,9 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * Retrieves all users.
+     * Récupère tous les utilisateurs.
      *
-     * @return ApiResponse containing a list of all users.
+     * @return ApiResponse contenant la liste de tous les utilisateurs.
      */
     @Override
     public ApiResponse<List<UserResponseDTO>> getAllUsers() {
@@ -48,11 +48,11 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * Updates a user by ID.
+     * Met à jour un utilisateur par ID.
      *
-     * @param id                   The ID of the user to update.
-     * @param userUpdateRequestDto The user update request data.
-     * @return ApiResponse containing the updated user.
+     * @param id                   L'ID de l'utilisateur à mettre à jour.
+     * @param userUpdateRequestDto Les données de la requête de mise à jour de l'utilisateur.
+     * @return ApiResponse contenant l'utilisateur mis à jour.
      */
     @Override
     public ApiResponse<UserResponseDTO> updateUser(Long id, UserUpdateRequestDTO userUpdateRequestDto) {
@@ -69,11 +69,11 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * Updates a user's password by ID.
+     * Met à jour le mot de passe d'un utilisateur par ID.
      *
-     * @param id                    The ID of the user to update.
-     * @param userPasswordUpdateDto The user password update request data.
-     * @return ApiResponse with no content.
+     * @param id                    L'ID de l'utilisateur à mettre à jour.
+     * @param userPasswordUpdateDto Les données de la requête de mise à jour du mot de passe de l'utilisateur.
+     * @return ApiResponse sans contenu.
      */
     @Override
     public ApiResponse<Void> updateUserPassword(Long id, UserPasswordUpdateDTO userPasswordUpdateDto) {

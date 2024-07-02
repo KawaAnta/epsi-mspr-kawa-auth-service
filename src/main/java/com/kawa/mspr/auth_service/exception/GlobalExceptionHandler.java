@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
 /**
- * Global exception handler for the Employee Service application.
+ * Exception globale pour KawaApplication
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -18,11 +18,11 @@ public class GlobalExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     /**
-     * Handles ResourceNotFoundException.
+     * Gère ResourceNotFoundException.
      *
-     * @param ex      The ResourceNotFoundException instance
-     * @param request The WebRequest instance
-     * @return ResponseEntity with an error message and HTTP status 404
+     * @param ex      L'instance de ResourceNotFoundException
+     * @param request L'instance de WebRequest
+     * @return ResponseEntity avec un message d'erreur et un statut HTTP 404
      */
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<?> handleResourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
@@ -32,11 +32,11 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * Handles IllegalArgumentException.
+     * Gère l'IllegalArgumentException.
      *
-     * @param ex      The IllegalArgumentException instance
-     * @param request The WebRequest instance
-     * @return ResponseEntity with an error message and HTTP status 400
+     * @param ex      L'instance de IllegalArgumentException
+     * @param request L'instance de WebRequest
+     * @return ResponseEntity avec un message d'erreur et un statut HTTP 400
      */
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<?> handleIllegalArgumentException(IllegalArgumentException ex, WebRequest request) {
@@ -46,11 +46,11 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * Handles all other exceptions.
+     * Gère toutes les autres exceptions.
      *
-     * @param ex      The Exception instance
-     * @param request The WebRequest instance
-     * @return ResponseEntity with an error message and HTTP status 500
+     * @param ex      L'instance de l'Exception
+     * @param request L'instance de WebRequest
+     * @return ResponseEntity avec un message d'erreur et un statut HTTP 500
      */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> handleGlobalException(Exception ex, WebRequest request) {

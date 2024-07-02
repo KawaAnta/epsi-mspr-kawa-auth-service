@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserMapper {
     /**
-     * Maps a User entity to a UserResponseDTO.
+     * Mappe une entité Utilisateur vers un UserResponseDTO.
      *
-     * @param user The User entity.
-     * @return The UserResponseDTO.
+     * @param user L'entité Utilisateur.
+     * @return Le UserResponseDTO.
      */
     public UserResponseDTO mapToUserResponseDTO(User user) {
         UserResponseDTO userResponseDTO = new UserResponseDTO();

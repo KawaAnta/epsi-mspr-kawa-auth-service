@@ -12,7 +12,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Represents a User entity.
+ * Représente une entité User
  */
 @Data
 @NoArgsConstructor
